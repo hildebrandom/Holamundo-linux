@@ -1,0 +1,7 @@
+ping google.com
+curl ifconfig.me
+nslookup google.com
+tracepath google.com
+ss -tuln
+   
+

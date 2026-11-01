@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f3ec">
+  <meta name="description" content="Café de especialidad, pan recién hecho y buenos momentos. Ven a conocer Casa Grano.">
+  <title>Casa Grano — Café de barrio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --cream: #f7f3ec;
+      --ink: #29251f;
+      --muted: #71695f;
+      --coffee: #70452f;
+      --coffee-dark: #4c3022;
+      --sage: #dce1d2;
+      --line: #ded8ce;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    .container { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+
+    .top-note {
+      padding: 9px 16px;
+      background: var(--coffee-dark);
+      color: #fffaf3;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    header {
+      position: relative;
+      z-index: 2;
+      border-bottom: 1px solid rgba(41, 37, 31, .1);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      font-family: var(--serif);
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+
+    .brand span { color: var(--coffee); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      color: #514a42;
+      font-size: 13px;
+    }
+
+    .nav-links a:not(.nav-cta):hover { color: var(--coffee); }
+
+    .nav-cta, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 22px;
+      background: var(--coffee);
+      color: #fffaf3;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      transition: background .2s, transform .2s;
+    }
+
+    .nav-cta:hover, .button:hover { background: var(--coffee-dark); transform: translateY(-2px); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 590px;
+      align-items: center;
+      gap: 60px;
+      padding-block: 58px 72px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--coffee);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
+
+    h1 {
+      max-width: 520px;
+      margin-bottom: 21px;
+      font-size: clamp(48px, 6vw, 76px);
+      letter-spacing: -.055em;
+      line-height: 1.04;
+    }
+
+    h1 em { color: var(--coffee); font-weight: 500; }
+
+    .hero-copy > p:not(.eyebrow) {
+      max-width: 440px;
+      margin-bottom: 29px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-actions { display: flex; align-items: center; gap: 23px; }
+
+    .text-link {
+      color: var(--coffee-dark);
+      font-size: 12px;
+      font-weight: 700;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 4px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 445px;
+      padding: 0 24px 24px 0;
+    }
+
+    .hero-visual::before {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 80%;
+      height: 83%;
+      background: var(--sage);
+      content: "";
+    }
+
+    .hero-visual img {
+      position: relative;
+      width: 100%;
+      height: 445px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .photo-note {
+      position: absolute;
+      right: -14px;
+      bottom: 34px;
+      max-width: 155px;
+      padding: 15px 17px;
+      background: #fffaf3;
+      box-shadow: 0 8px 30px rgba(41, 37, 31, .1);
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.3;
+      transform: rotate(2deg);
+    }
+
+    .photo-note span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .features {
+      border-block: 1px solid var(--line);
+      background: rgba(255, 255, 255, .26);
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding-block: 27px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #514a42;
+      font-size: 12px;
+    }
+
+    .feature + .feature { border-left: 1px solid var(--line); }
+
+    .feature-icon {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border-radius: 50%;
+      background: #e9e3d8;
+      color: var(--coffee);
+      font-size: 17px;
+    }
+
+    .section { padding-block: 104px; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 39px;
+    }
+
+    h2 {
+      max-width: 520px;
+      margin-bottom: 0;
+      font-size: clamp(36px, 4vw, 50px);
+      letter-spacing: -.04em;
+      line-height: 1.12;
+    }
+
+    .section-heading > p {
+      max-width: 330px;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .menu-card {
+      overflow: hidden;
+      background: #fffaf3;
+      border: 1px solid rgba(41, 37, 31, .07);
+    }
+
+    .menu-card img { height: 220px; object-fit: cover; }
+
+    .menu-info { padding: 21px 22px 23px; }
+
+    .menu-name-price {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .menu-name-price h3 { margin-bottom: 8px; font-size: 21px; }
+    .price { color: var(--coffee); font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .menu-info p { margin-bottom: 0; color: var(--muted); font-size: 12px; }
+
+    .story {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      align-items: center;
+      gap: 80px;
+      background: var(--sage);
+    }
+
+    .story .container { display: contents; }
+
+    .story-image { height: 470px; object-fit: cover; }
+
+    .story-copy { max-width: 470px; padding: 60px 48px 60px 0; }
+    .story-copy h2 { margin-bottom: 20px; }
+    .story-copy > p:not(.eyebrow) { margin-bottom: 26px; color: #5e6256; font-size: 14px; }
+
+    .visit {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .visit h2 { margin-bottom: 18px; }
+    .visit-intro { max-width: 430px; margin-bottom: 29px; color: var(--muted); font-size: 14px; }
+    .visit-details { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .visit-details h3 { margin-bottom: 8px; font-size: 18px; }
+    .visit-details p { margin-bottom: 0; color: var(--muted); font-size: 12px; }
+
+    .visit-image {
+      height: 365px;
+      object-fit: cover;
+    }
+
+    .closing {
+      padding: 70px 24px;
+      background: var(--coffee-dark);
+      color: #fffaf3;
+      text-align: center;
+    }
+
+    .closing .eyebrow { color: #d6b69b; }
+    .closing h2 { max-width: 650px; margin: 0 auto 17px; }
+    .closing p:not(.eyebrow) { color: #ded1c5; font-size: 13px; }
+    .closing .button { margin-top: 11px; background: #fffaf3; color: var(--coffee-dark); }
+    .closing .button:hover { background: #e8dfd3; }
+
+    footer { padding-block: 24px; }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-brand { color: var(--ink); font-family: var(--serif); font-size: 19px; font-weight: 700; }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 36px, 560px); }
+      .nav { min-height: 72px; }
+      .nav-links { gap: 17px; font-size: 11px; }
+      .nav-links a:nth-child(2), .nav-links a:nth-child(3) { display: none; }
+      .nav-cta { min-height: 39px; padding-inline: 14px; }
+      .hero { grid-template-columns: 1fr; gap: 38px; padding-block: 55px 58px; }
+      .hero-visual { min-height: 340px; margin-right: 12px; }
+      .hero-visual img { height: 340px; }
+      .photo-note { right: -12px; }
+      .feature-row { gap: 12px; }
+      .feature { flex-direction: column; text-align: center; font-size: 10px; }
+      .feature-icon { width: 32px; height: 32px; }
+      .section { padding-block: 72px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 14px; }
+      .menu-grid { grid-template-columns: 1fr; gap: 15px; }
+      .menu-card { display: grid; grid-template-columns: 38% 1fr; }
+      .menu-card img { height: 100%; min-height: 150px; }
+      .menu-info { align-self: center; padding: 17px; }
+      .menu-name-price { flex-direction: column; gap: 0; }
+      .story { grid-template-columns: 1fr; gap: 0; }
+      .story .container { display: block; }
+      .story-image { height: 300px; }
+      .story-copy { max-width: none; padding: 55px 24px 62px; }
+      .visit { grid-template-columns: 1fr; gap: 30px; }
+      .visit-image { height: 270px; }
+      .footer-row { flex-wrap: wrap; }
+    }
+
+    @media (max-width: 420px) {
+      .top-note { font-size: 9px; }
+      .nav-links { gap: 10px; }
+      .hero-actions { align-items: flex-start; flex-direction: column; gap: 16px; }
+      .feature-row { padding-block: 20px; }
+      .visit-details { gap: 20px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-note">Tu pausa favorita está más cerca de lo que crees · Abiertos todos los días</div>
+
+  <header>
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="#" aria-label="Casa Grano, inicio">casa<span>grano.</span></a>
+      <div class="nav-links">
+        <a href="#menu">Menú</a>
+        <a href="#historia">Nuestra historia</a>
+        <a href="#visitanos">Visítanos</a>
+        <a class="nav-cta" href="#menu">Ver el menú</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Café de barrio, hecho con cariño</p>
+        <h1 id="hero-title">Un buen día empieza con <em>buen café.</em></h1>
+        <p>Granos de origen, pan recién horneado y un lugarcito para bajar el ritmo. Aquí siempre hay una mesa para ti.</p>
+        <div class="hero-actions">
+          <a class="button" href="#menu">Descubre el menú</a>
+          <a class="text-link" href="#historia">Conoce Casa Grano&nbsp; →</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1100&q=85" alt="Taza de café preparada con granos recién molidos">
+        <div class="photo-note">Hecho despacio,<br>disfrutado sin prisa.<span>Desde 2018</span></div>
+      </div>
+    </section>
+
+    <section class="features" aria-label="Lo que nos hace especiales">
+      <div class="feature-row container">
+        <div class="feature"><span class="feature-icon" aria-hidden="true">☕</span><span>Granos de origen</span></div>
+        <div class="feature"><span class="feature-icon" aria-hidden="true">✳</span><span>Hecho cada mañana</span></div>
+        <div class="feature"><span class="feature-icon" aria-hidden="true">♡</span><span>Un espacio para todos</span></div>
+      </div>
+    </section>
+
+    <section class="section container" id="menu">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Del molino a tu mesa</p>
+          <h2>Pequeños placeres,<br>grandes momentos.</h2>
+        </div>
+        <p>Preparamos cada taza al momento y horneamos todos los días con ingredientes de temporada.</p>
+      </div>
+      <div class="menu-grid">
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80" alt="Café latte con una capa cremosa de leche">
+          <div class="menu-info">
+            <div class="menu-name-price"><h3>Latte de la casa</h3><span class="price">$65</span></div>
+            <p>Espresso doble y leche cremosa, siempre en su punto.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Pan artesanal recién horneado">
+          <div class="menu-info">
+            <div class="menu-name-price"><h3>Pan de masa madre</h3><span class="price">$48</span></div>
+            <p>Corteza doradita, centro suave y mantequilla de temporada.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Rebanada de pastel de chocolate artesanal">
+          <div class="menu-info">
+            <div class="menu-name-price"><h3>Pastel de chocolate</h3><span class="price">$72</span></div>
+            <p>Chocolate intenso, horneado aquí y perfecto para compartir.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="story" id="historia">
+      <div class="container">
+        <img class="story-image" src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1100&q=85" alt="Interior cálido de una cafetería de barrio">
+        <div class="story-copy">
+          <p class="eyebrow">Un poquito de nosotros</p>
+          <h2>El café sabe mejor cuando se comparte.</h2>
+          <p>Casa Grano nació de una idea sencilla: crear un lugar donde el tiempo se sienta un poquito más amable. Elegimos cada grano con cuidado, trabajamos con productores que admiramos y ponemos el corazón en cada taza.</p>
+          <a class="text-link" href="#visitanos">Ven a conocernos&nbsp; →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container visit" id="visitanos">
+      <div>
+        <p class="eyebrow">Nos vemos pronto</p>
+        <h2>Tu mesa ya<br>está lista.</h2>
+        <p class="visit-intro">Pasa por un café para llevar o quédate un rato. Estamos en el corazón del barrio, con las puertas abiertas y el café caliente.</p>
+        <div class="visit-details">
+          <div>
+            <h3>Encuéntranos</h3>
+            <p>Av. de los Cafetos 128<br>Col. Roma Norte, Ciudad de México</p>
+          </div>
+          <div>
+            <h3>Estamos aquí</h3>
+            <p>Lun–Vie · 8:00–19:00<br>Sáb–Dom · 9:00–17:00</p>
+          </div>
+        </div>
+      </div>
+      <img class="visit-image" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1000&q=85" alt="Barista sirviendo café en la barra">
+    </section>
+
+    <section class="closing">
+      <p class="eyebrow">Café, conversación y algo rico</p>
+      <h2>Haz espacio para un momento bonito.</h2>
+      <p>Te esperamos con café recién hecho y una sonrisa.</p>
+      <a class="button" href="https://maps.google.com/?q=Roma+Norte+Ciudad+de+Mexico" target="_blank" rel="noopener noreferrer">Cómo llegar&nbsp; →</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-row container">
+      <a class="footer-brand" href="#">casa grano.</a>
+      <span>Un café de barrio, para todos.</span>
+      <span>© 2025 Casa Grano</span>
+    </div>
+  </footer>
+</body>
+</html>
